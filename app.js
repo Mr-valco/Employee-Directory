@@ -33,22 +33,20 @@ const render = function () {
 
 
 const view = function () {
-    // $('#employeeList').hide();
-     $('#textInput').hide();
-     render();
- };
- 
- $('#view').on('click', view);
+    render();
+};
+
+$('#view').on('click', view);
 
 // 2. When the add button is pressed, use the `val` function to get the value of the user input and and add that name to the list. Re-render the list.
 const getInputVal = function () {
-    
+
     var employee = {
         name: $('#name').val(),
         officeNum: $('#officeNum').val(),
         phoneNum: $('#phoneNum').val()
     };
-   
+
     employeeList.push(employee);
 
     // After performing our actions, clear the name input and re-render the list
@@ -69,11 +67,15 @@ const verifys = function () {
         officeNum: $('#officeNum').val(),
         phoneNum: $('#phoneNum').val()
     };
+    //looks for the index of the item 
+    const searchIndex = employeeList.findIndex((obj => obj.name == employee.name));
 
     // If our employeeList includes the input value, add message to the body
-    if (employeeList.includes(employee.name)) {
+    if (searchIndex !== -1) {
 
-        document.getElementById("verify").innerHTML = 'YES';
+        $('#verify').text('YES');
+    } else {
+        $('#verify').text('NO');
     }
 
     // After performing our actions, clear the name input
@@ -81,6 +83,29 @@ const verifys = function () {
 }
 
 $('#search').on('click', verifys);
+
+
+const editEmployee = function () {
+
+    var employee = {
+        name: $('#name').val(),
+        officeNum: $('#officeNum').val(),
+        phoneNum: $('#phoneNum').val()
+    };
+
+    //edit employee
+    const updateIndex = employeeList.findIndex((obj => obj.name == employee.name));
+    employeeList[updateIndex].officeNum = $('#officeNum').val();
+    employeeList[updateIndex].phoneNum = $('#phoneNum').val();
+
+    // After performing our actions, clear the name input and re-render the list
+    $('#name').val('');
+    $('#officeNum').val('');
+    $('#phoneNum').val('');
+    render();
+
+}
+$('#update').on('click', editEmployee);
 
 //4. When the delete button is pressed, delete the element from employeeList that matches the name the user entered in the input field. Re-render the list.
 const removeName = function () {
@@ -90,10 +115,10 @@ const removeName = function () {
         officeNum: $('#officeNum').val(),
         phoneNum: $('#phoneNum').val()
     };
-
+    const searchIndex = employeeList.findIndex((obj => obj.name == employee.name));
     // We use the indexOf method to find the index of the input name
     // Then we use splice to remove 1 element, starting with that index
-    employeeList.splice(employeeList.indexOf(employee.name), 1);
+    employeeList.splice(searchIndex, 1);
 
     // After performing our actions, clear the name input and re-render the list
     $('#name').val('');
@@ -103,4 +128,3 @@ const removeName = function () {
 $('#delete').on('click', removeName);
 
 
-render();
