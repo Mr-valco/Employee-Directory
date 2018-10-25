@@ -1,3 +1,4 @@
+$('#textInput').hide();
 
 const theCard = function (name, officeNum, phoneNum) {
 
@@ -32,11 +33,7 @@ const render = function () {
 
 
 
-const view = function () {
-    render();
-};
 
-$('#view').on('click', view);
 
 // 2. When the add button is pressed, use the `val` function to get the value of the user input and and add that name to the list. Re-render the list.
 const getInputVal = function () {
@@ -56,12 +53,12 @@ const getInputVal = function () {
     render();
 }
 
-$('#add').on('click', getInputVal);
+$('#addBtn').on('click', getInputVal);
 
 
 //3. When the search button is pressed, add the  message to the `body` if the name that was input is in the employeeList array.
 const verifys = function () {
-
+   
     var employee = {
         name: $('#name').val(),
         officeNum: $('#officeNum').val(),
@@ -75,17 +72,18 @@ const verifys = function () {
     if (searchIndex !== -1) {
         
         $('#verify').text('YES');
-       
+        $('#employeeList').hide();
     } else {
         
         $('#verify').text('NO');
+        $('#employeeList').hide();
     }
-    $('#verify').removeClass('d-none');
+    $('#verify').show();
     // After performing our actions, clear the name input
     $('#name').val('');
 }
 
-$('#search').on('click', verifys);
+$('#searchBtn').on('click', verifys);
 
 
 const editEmployee = function () {
@@ -108,7 +106,7 @@ const editEmployee = function () {
     render();
 
 }
-$('#update').on('click', editEmployee);
+$('#updateBtn').on('click', editEmployee);
 
 //4. When the delete button is pressed, delete the element from employeeList that matches the name the user entered in the input field. Re-render the list.
 const removeName = function () {
@@ -128,6 +126,71 @@ const removeName = function () {
     render();
 }
 
-$('#delete').on('click', removeName);
+$('#deleteBtn').on('click', removeName);
 
 
+
+const viewLink = function () {
+    render();
+    $('#employeeList').show();
+    $('#verify').hide();
+    $('#textInput').hide();
+};
+
+$('#view').on('click', viewLink);
+
+const addLink = function () {
+    render();
+    $('#employeeList').hide();
+    $('#verify').hide();
+    $('#searchBtn').hide();
+    $('#updateBtn').hide();
+    $('#deleteBtn').hide();
+    $('#textInput').show();
+    $('#addBtn').show();
+
+};
+
+$('#addLink').on('click', addLink);
+
+const searchLink = function () {
+    render();
+    $('#employeeList').hide();
+    $('#verify').hide();
+    $('#updateBtn').hide();
+    $('#deleteBtn').hide();
+    $('#textInput').show();
+    $('#searchBtn').show();
+    $('#addBtn').hide();
+
+};
+
+$('#searchLink').on('click', searchLink);
+
+const updateLink = function () {
+    render();
+    $('#employeeList').hide();
+    $('#verify').hide();
+    $('#searchBtn').hide();
+    $('#updateBtn').show();
+    $('#deleteBtn').hide();
+    $('#textInput').show();
+    $('#searchBtn').hide();
+
+};
+
+$('#updateLink').on('click', updateLink);
+
+const deleteLink = function () {
+    render();
+    $('#employeeList').hide();
+    $('#verify').hide();
+    $('#searchBtn').hide();
+    $('#updateBtn').hide();
+    $('#deleteBtn').show();
+    $('#textInput').show();
+    $('#searchBtn').hide();
+
+};
+
+$('#deleteLink').on('click', deleteLink);
