@@ -15,11 +15,11 @@
 
 <body>
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-center">
       <!-- menue -->
-      <div class="col-2 bg-dark text-light ">
+      <div class="col-sm-2 bg-dark text-light ">
         <br>
-        <i class=" btn fas fa-paw w-100"></i>
+        <i class=" btn fas fa-paw btn-lg w-100"></i>
         <button class="btn btn-dark  w-100" id="view">VIEW</button>
         <button class="btn btn-dark  w-100" id="add">ADD</button>
         <button class="btn btn-dark  w-100" id="search">VERIFY</button>
@@ -27,18 +27,19 @@
         <button class="btn btn-dark  w-100" id="delete">DELETE</button>
       </div>
 
-      <div class="col-10">
+      <div class="col-sm-10 bg-light">
         <br>
         <!-- input fields -->
-        <div class="" id="textInput">
-          <input id="name">
-          <input id="officeNum">
-          <input id="phoneNum">
-          <button class=" btn fas fa-search" id="search"></button>
-          <p id="verify" style="color: red;"> </p>
+        <div class="row justify-content-center py-3" id="textInput">
+          <input class="mx-2" id="name" placeholder="Name">
+          <input class="mx-2" id="officeNum" placeholder="Office Number">
+          <input class="mx-2" id="phoneNum" placeholder="Phone Number">
+          <button class=" btn btn-outline-dark btn-lg mx-1 btn fas fa-search" id="search"></button>
+         
         </div>
         <!-- Content is in this div  -->
         <div class="content" id="employeeList"></div>
+        <p class="d-none" id="verify" style="color: red;"> </p>
       </div>
     </div>
   </div>

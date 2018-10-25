@@ -70,14 +70,17 @@ const verifys = function () {
     //looks for the index of the item 
     const searchIndex = employeeList.findIndex((obj => obj.name == employee.name));
 
+ 
     // If our employeeList includes the input value, add message to the body
     if (searchIndex !== -1) {
-
+        
         $('#verify').text('YES');
+       
     } else {
+        
         $('#verify').text('NO');
     }
-
+    $('#verify').removeClass('d-none');
     // After performing our actions, clear the name input
     $('#name').val('');
 }
