@@ -31,10 +31,6 @@ const render = function () {
     }
 }
 
-
-
-
-
 // 2. When the add button is pressed, use the `val` function to get the value of the user input and and add that name to the list. Re-render the list.
 const getInputVal = function () {
 
@@ -58,7 +54,7 @@ $('#addBtn').on('click', getInputVal);
 
 //3. When the search button is pressed, add the  message to the `body` if the name that was input is in the employeeList array.
 const verifys = function () {
-   
+
     var employee = {
         name: $('#name').val(),
         officeNum: $('#officeNum').val(),
@@ -67,14 +63,14 @@ const verifys = function () {
     //looks for the index of the item 
     const searchIndex = employeeList.findIndex((obj => obj.name == employee.name));
 
- 
+
     // If our employeeList includes the input value, add message to the body
     if (searchIndex !== -1) {
-        
+
         $('#verify').text('YES');
         $('#employeeList').hide();
     } else {
-        
+
         $('#verify').text('NO');
         $('#employeeList').hide();
     }
@@ -116,6 +112,7 @@ const removeName = function () {
         officeNum: $('#officeNum').val(),
         phoneNum: $('#phoneNum').val()
     };
+    
     const searchIndex = employeeList.findIndex((obj => obj.name == employee.name));
     // We use the indexOf method to find the index of the input name
     // Then we use splice to remove 1 element, starting with that index
@@ -127,8 +124,6 @@ const removeName = function () {
 }
 
 $('#deleteBtn').on('click', removeName);
-
-
 
 const viewLink = function () {
     render();
@@ -148,7 +143,6 @@ const addLink = function () {
     $('#deleteBtn').hide();
     $('#textInput').show();
     $('#addBtn').show();
-
 };
 
 $('#addLink').on('click', addLink);
@@ -162,7 +156,6 @@ const searchLink = function () {
     $('#textInput').show();
     $('#searchBtn').show();
     $('#addBtn').hide();
-
 };
 
 $('#searchLink').on('click', searchLink);
@@ -176,7 +169,6 @@ const updateLink = function () {
     $('#deleteBtn').hide();
     $('#textInput').show();
     $('#searchBtn').hide();
-
 };
 
 $('#updateLink').on('click', updateLink);
@@ -190,7 +182,6 @@ const deleteLink = function () {
     $('#deleteBtn').show();
     $('#textInput').show();
     $('#searchBtn').hide();
-
 };
 
 $('#deleteLink').on('click', deleteLink);
